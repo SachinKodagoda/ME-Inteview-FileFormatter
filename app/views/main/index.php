@@ -7,17 +7,26 @@
 
     <div class="overallCover">
         <div class="selectionItemCover">
-            <form action="<?php echo URLROOT; ?>/main/getJson" method="post">
-                <input type="hidden" name="data_json" value="" id="data_json">
-                <input type="submit" value="JSON" name="getjson" class="selectionItem noOutline">
+            <form action="<?php echo URLROOT; ?>/main/getJson" method="post" class="ab_form">
+                <div class="ab_cover">
+                    <input type="hidden" name="data_json" value="" id="data_json">
+                    <input type="submit" value="JSON" name="getjson" class="selectionItem noOutline">
+                    <img src="<?php echo URLROOT ?>/img/download.svg" alt="" class="ab_img">
+                </div>
             </form>
-            <form action="<?php echo URLROOT; ?>/main/getYaml" method="post">
-                <input type="hidden" name="data_yaml" value="" id="data_yaml">
-                <input type="submit" value="YAML" name="getyaml" class="selectionItem noOutline">
+            <form action="<?php echo URLROOT; ?>/main/getYaml" method="post" class="ab_form">
+                <div class="ab_cover">
+                    <input type="hidden" name="data_yaml" value="" id="data_yaml">
+                    <input type="submit" value="YAML" name="getyaml" class="selectionItem noOutline">
+                    <img src="<?php echo URLROOT ?>/img/download.svg" alt="" class="ab_img">
+                </div>
             </form>
-            <form action="<?php echo URLROOT; ?>/main/getCsv" method="post">
-                <input type="hidden" name="data_csv" value="" id="data_csv">
-                <input type="submit" value="CSV" name="getcsv" class="selectionItem noOutline">
+            <form action="<?php echo URLROOT; ?>/main/getCsv" method="post" class="ab_form">
+                <div class="ab_cover">
+                    <input type="hidden" name="data_csv" value="" id="data_csv">
+                    <input type="submit" value="CSV" name="getcsv" class="selectionItem noOutline">
+                    <img src="<?php echo URLROOT ?>/img/download.svg" alt="" class="ab_img">
+                </div>
             </form>
         </div>
         <div class="customTableCover">

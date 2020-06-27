@@ -111,6 +111,7 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .selectionItem {
@@ -123,6 +124,25 @@ body {
     padding: .5rem 0;
     text-align: center;
     cursor: pointer;
+}
+
+.ab_cover {
+    position: absolute;
+}
+
+.ab_img {
+    width: 30px;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ab_form {
+    display: inline-block;
+    width: 300px;
+    height: 80px;
 }
 
 .selectionItem.active {
