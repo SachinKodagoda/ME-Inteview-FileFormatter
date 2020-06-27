@@ -11,8 +11,14 @@
                 <input type="hidden" name="data_json" value="" id="data_json">
                 <input type="submit" value="JSON" name="getjson" class="selectionItem noOutline">
             </form>
-            <div class="selectionItem" onclick="openTab(event, 'table_3')" id="methods_selected">CSV</div><br />
-            <div class="selectionItem" onclick="openTab(event, 'table_4')" id="methods_selected">YAML</div><br />
+            <form action="<?php echo URLROOT; ?>/main/getYaml" method="post">
+                <input type="hidden" name="data_yaml" value="" id="data_yaml">
+                <input type="submit" value="YAML" name="getyaml" class="selectionItem noOutline">
+            </form>
+            <form action="<?php echo URLROOT; ?>/main/getCsv" method="post">
+                <input type="hidden" name="data_csv" value="" id="data_csv">
+                <input type="submit" value="CSV" name="getcsv" class="selectionItem noOutline">
+            </form>
         </div>
         <div class="customTableCover">
             <div class="customTableInnerCover">
@@ -47,9 +53,12 @@
         }
         ?>
 
-        tableCreate(js_data[0], 'table1');
+
+        tableCreate(JSON.parse(js_data[0]['d_json']), 'table1');
 
         document.getElementById('data_json').value = js_data[0]['d_json'];
+        document.getElementById('data_yaml').value = js_data[0]['d_yaml'];
+        document.getElementById('data_csv').value = js_data[0]['d_csv'];
 
         function tableCreate(data, table_id) {
             var xtable = document.getElementById(table_id);
@@ -58,23 +67,24 @@
             var thead_tr = document.createElement('tr');
             var tbody = document.createElement('tbody');
 
-            for (let x = 0; x < data['d_head'].length; x++) {
+            for (var h_key in data[0]) {
                 var thead_tr_th = document.createElement('th');
                 thead_tr_th.classList.add("centerHeader");
-                thead_tr_th.innerHTML = data['d_head'][x];
+                thead_tr_th.innerHTML = h_key;
                 thead_tr.appendChild(thead_tr_th);
             }
             thead.appendChild(thead_tr);
 
-            for (var i = 0; i < data['d_body'].length; i++) {
+            for (var key1 in data) {
                 var tbody_tr = document.createElement('tr');
-                for (var j = 0; j < data['d_body'][i].length; j++) {
+                for (var key2 in data[key1]) {
                     var tbody_tr_td = document.createElement('td');
-                    tbody_tr_td.innerHTML = data['d_body'][i][j];
+                    tbody_tr_td.innerHTML = data[key1][key2];
                     tbody_tr.appendChild(tbody_tr_td);
                 }
                 tbody.appendChild(tbody_tr);
             }
+
             xtable.appendChild(thead);
             xtable.appendChild(tbody);
         }

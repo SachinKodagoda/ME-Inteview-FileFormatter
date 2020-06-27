@@ -6,6 +6,7 @@
   <meta name="google" content="notranslate">
   <meta http-equiv="Content-Language" content="en">
   <!-- Fonts -->
+  <link rel="icon" href="<?php echo URLROOT ?>/img/favicon.ico" type="image/ico" sizes="16x16" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="<?php echo URLROOT ?>/css/normalize.css" />
   <link rel="stylesheet" type="text/css" href="<?php echo URLROOT ?>/css/style.css" />
