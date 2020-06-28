@@ -1,5 +1,5 @@
 <?php
-
+// These are the configurations of the system
 define('APPROOT', dirname(dirname(__FILE__)));
 define('PUBROOT', dirname(dirname(dirname(__FILE__))));
 define('URLROOT', 'http://localhost/interview');

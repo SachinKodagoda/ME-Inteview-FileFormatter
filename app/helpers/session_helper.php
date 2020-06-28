@@ -1,4 +1,5 @@
 <?php
+  //used to creat flash messages
   session_start();
   function flash($name = '', $message = '', $class = 'alert alert-success'){
     if(!empty($name)){

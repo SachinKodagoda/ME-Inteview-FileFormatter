@@ -1,5 +1,5 @@
 <?php
-function download_yaml($file)
+function download_yaml2($file)
 {
     header("Content-type: text/yaml");
     ob_end_clean();

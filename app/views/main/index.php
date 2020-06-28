@@ -6,26 +6,44 @@
 <body>
 
     <div class="overallCover">
-        <?php echo $data["error"]?>
+        <?php flash('error_msg'); ?>
+        <?php flash('success_msg'); ?>
         <div class="selectionItemCover">
             <form action="<?php echo URLROOT; ?>/main/getJson" method="post" class="ab_form">
                 <div class="ab_cover">
                     <input type="hidden" name="data_json" value="" id="data_json">
-                    <input type="submit" value="JSON" name="getjson" class="selectionItem noOutline">
+                    <input type="submit" value="JSON" name="getjson" class="selectionItem noOutline" id="data_json_btn">
                     <img src="<?php echo URLROOT ?>/img/download.svg" alt="" class="ab_img">
                 </div>
             </form>
             <form action="<?php echo URLROOT; ?>/main/getYaml" method="post" class="ab_form">
                 <div class="ab_cover">
                     <input type="hidden" name="data_yaml" value="" id="data_yaml">
-                    <input type="submit" value="YAML" name="getyaml" class="selectionItem noOutline">
+                    <input type="submit" value="YAML TYPE1" name="getyaml" class="selectionItem noOutline" id="data_yaml_btn">
                     <img src="<?php echo URLROOT ?>/img/download.svg" alt="" class="ab_img">
                 </div>
             </form>
+
+            <form action="<?php echo URLROOT; ?>/main/getYaml2" method="post" class="ab_form">
+                <div class="ab_cover">
+                    <input type="hidden" name="data_yaml2" value="" id="data_yaml2">
+                    <input type="submit" value="YAML TYPE2" name="getyaml2" class="selectionItem noOutline" id="data_yaml2_btn">
+                    <img src="<?php echo URLROOT ?>/img/download.svg" alt="" class="ab_img">
+                </div>
+            </form>
+
             <form action="<?php echo URLROOT; ?>/main/getCsv" method="post" class="ab_form">
                 <div class="ab_cover">
                     <input type="hidden" name="data_csv" value="" id="data_csv">
-                    <input type="submit" value="CSV" name="getcsv" class="selectionItem noOutline">
+                    <input type="submit" value="CSV" name="getcsv" class="selectionItem noOutline" id="data_csv_btn">
+                    <img src="<?php echo URLROOT ?>/img/download.svg" alt="" class="ab_img">
+                </div>
+            </form>
+
+            <form action="<?php echo URLROOT; ?>/main/getXml" method="post" class="ab_form">
+                <div class="ab_cover">
+                    <input type="hidden" name="data_xml" value="" id="data_xml">
+                    <input type="submit" value="XML" name="getxml" class="selectionItem noOutline" id="data_xml_btn">
                     <img src="<?php echo URLROOT ?>/img/download.svg" alt="" class="ab_img">
                 </div>
             </form>
@@ -53,13 +71,18 @@
     </div>
     <script type='text/javascript'>
         var js_data = [];
+        var file_type_selected = "";
         <?php
         if (count($data["data"]) > 0) {
             $final_data = $data["data"];
+            $file_type_selected = $data["file_type"];
             $final_data_encoded = json_encode($final_data);
+            $file_type_selected_encoded = json_encode($file_type_selected);
             echo "js_data = " . $final_data_encoded . ";\n";
+            echo "file_type_selected = " . $file_type_selected_encoded . ";\n";
         } else {
             echo "js_data = [];\n";
+            echo "file_type_selected = '';\n";
         }
         ?>
 
@@ -68,7 +91,28 @@
 
         document.getElementById('data_json').value = js_data[0]['d_json'];
         document.getElementById('data_yaml').value = js_data[0]['d_yaml'];
+        document.getElementById('data_yaml2').value = js_data[0]['d_yaml2'];
         document.getElementById('data_csv').value = js_data[0]['d_csv'];
+        document.getElementById('data_xml').value = js_data[0]['d_xml'];
+
+        switch (file_type_selected) {
+            case 'csv':
+                document.getElementById("data_csv_btn").classList.add("active");
+                break;
+            case 'json':
+                document.getElementById("data_json_btn").classList.add("active");
+                break;
+            case 'xml':
+                document.getElementById("data_xml_btn").classList.add("active");
+                break;
+            case 'yaml':
+                document.getElementById("data_yaml_btn").classList.add("active");
+                document.getElementById("data_yaml2_btn").classList.add("active");
+                break;
+            default:
+                break;
+        }
+
 
         function tableCreate(data, table_id) {
             var xtable = document.getElementById(table_id);
@@ -103,6 +147,7 @@
     <script src="<?php echo URLROOT ?>/js/jquery.js" type="text/javascript"></script>
 
     <script src="<?php echo URLROOT ?>/js/script.js" type="text/javascript"></script>
+    <script src="<?php echo URLROOT ?>/js/hidesplash.js" type="text/javascript"></script>
 
 </body>
 

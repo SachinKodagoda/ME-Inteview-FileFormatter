@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 final class EncodeTest extends TestCase
 {
 
-
+    // test => upload custom csv and get json output
     public function testCsvInputGetJson(): void
     {
         $encode = new Encode();
@@ -19,6 +19,7 @@ final class EncodeTest extends TestCase
         );
     }
 
+    // test => upload custom json and get json output
     public function testJsonInputGetJson(): void
     {
         $encode = new Encode();
@@ -28,6 +29,7 @@ final class EncodeTest extends TestCase
         );
     }
 
+     // test => upload custom yaml and get json output
     public function testYamlInputGetJson(): void
     {
         $encode = new Encode();
@@ -37,6 +39,7 @@ final class EncodeTest extends TestCase
         );
     }
 
+     // test => send array back to the controller
     public function testArrayOutput(): void
     {
         $encode = new Encode();
@@ -48,6 +51,7 @@ final class EncodeTest extends TestCase
         );
     }
 
+    // test => convert json to yaml
     public function testYamlOutput(): void
     {
         $encode = new Encode();
@@ -57,12 +61,13 @@ final class EncodeTest extends TestCase
         );
     }
 
+     // test => convert json to csv
     public function testCsvOutput(): void
     {
         $encode = new Encode();
         $this->assertSame(
             "id,title\n53421926,Dr\n",
-            $encode->getCsvVal('C:\xampp\htdocs\interview\app\tests\files\input.csv', 'csv')
+            $encode->getCsvVal('C:\xampp\htdocs\interview\app\tests\files\input.json', 'json')
         );
     }
 }
