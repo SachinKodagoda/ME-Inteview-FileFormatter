@@ -6,6 +6,7 @@
 <body>
 
     <div class="overallCover">
+        <?php echo $data["error"]?>
         <div class="selectionItemCover">
             <form action="<?php echo URLROOT; ?>/main/getJson" method="post" class="ab_form">
                 <div class="ab_cover">
