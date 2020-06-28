@@ -86,15 +86,14 @@
         }
         ?>
 
-
-        tableCreate(JSON.parse(js_data[0]['d_json']), 'table1');
-
-        document.getElementById('data_json').value = js_data[0]['d_json'];
-        document.getElementById('data_yaml').value = js_data[0]['d_yaml'];
-        document.getElementById('data_yaml2').value = js_data[0]['d_yaml2'];
-        document.getElementById('data_csv').value = js_data[0]['d_csv'];
-        document.getElementById('data_xml').value = js_data[0]['d_xml'];
-
+        if (js_data.length > 0) {
+            tableCreate(JSON.parse(js_data[0]['d_json']), 'table1');
+            document.getElementById('data_json').value = js_data[0]['d_json'];
+            document.getElementById('data_yaml').value = js_data[0]['d_yaml'];
+            document.getElementById('data_yaml2').value = js_data[0]['d_yaml2'];
+            document.getElementById('data_csv').value = js_data[0]['d_csv'];
+            document.getElementById('data_xml').value = js_data[0]['d_xml'];
+        }
         switch (file_type_selected) {
             case 'csv':
                 document.getElementById("data_csv_btn").classList.add("active");
